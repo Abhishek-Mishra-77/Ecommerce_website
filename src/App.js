@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from 'react';
+import NavBar from './components/Header/NavBar';
+import Header from './components/Header/Header';
+import Music from './components/Music/Music';
+import Merch from './components/Merch/Merch';
+import Footer from './components/Footer/Footer';
+import Cart from './components/Cart/Cart';
 
 function App() {
+
+  const [openCart, setOpenCart] = useState(false);
+
+  const cartOpenHandler = () => {
+    setOpenCart(true);
+  }
+
+  const cartCloseHandler = () => {
+    setOpenCart(false);
+  }
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='Ecommerce-container'>
+      <NavBar cartOpenHandler={cartOpenHandler} />
+      <Header />
+      {openCart && <Cart cartCloseHandler={cartCloseHandler} />}
+      <Music />
+      <Merch />
+      <Footer />
     </div>
   );
 }

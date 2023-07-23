@@ -1,41 +1,44 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { ItemProvideContext } from '../Cart/ContextApi/ItemProvider';
 
 const Music = () => {
+
+    const cartCtx = useContext(ItemProvideContext);
 
     const productsArr = [
         {
             title: 'Colors',
-            id:'a1',
+            id: 'a1',
             price: 100,
             imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
         },
         {
             title: 'Black and white Colors',
-            id:'a2',
+            id: 'a2',
             price: 50,
             imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
         },
         {
             title: 'Yellow and Black Colors',
-            id:'a3',
+            id: 'a3',
             price: 70,
             imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
         },
         {
             title: 'Blue Color',
             price: 100,
-            id:'a4',
+            id: 'a4',
             imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
         },
         {
             title: 'Yellow and Black Colors',
-            id:'a5',
+            id: 'a5',
             price: 70,
             imageUrl: 'https://images.pexels.com/photos/288100/pexels-photo-288100.jpeg?auto=compress&cs=tinysrgb&w=600',
         },
         {
             title: 'Mix Color',
-            id:'a6',
+            id: 'a6',
             price: 100,
             imageUrl: 'https://images.pexels.com/photos/5022847/pexels-photo-5022847.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
         }
@@ -56,13 +59,13 @@ const Music = () => {
                         </div>
 
                         <div>
-                            <a href="#" style={{
+                            <button onClick={() => cartCtx.addCartItem(product)} href="#" style={{
                                 marginTop: '20px',
                                 float: 'right',
                                 color: 'white',
                                 fontWeight: 'bold',
                                 fontSize: '15px'
-                            }} className="btn btn-info">ADD TO CARD</a>
+                            }} className="btn btn-info">ADD TO CARD</button>
 
 
                             <span style={{

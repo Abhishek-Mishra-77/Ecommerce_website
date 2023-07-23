@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/button'
-import Badge from 'react-bootstrap/badge'
+import Badge from 'react-bootstrap/badge';
+import { ItemProvideContext } from '../Cart/ContextApi/ItemProvider';
 
 
 const NavBar = (props) => {
+
+    const cartCtx = useContext(ItemProvideContext);
+
     return (
         <Navbar className='navbar navbar-expand navbar-dark bg-dark'>
             <div className='container'>
@@ -22,8 +25,9 @@ const NavBar = (props) => {
                         >ABOUT</a>
                     </li>
                 </ul>
-                <button onClick={props.cartOpenHandler} className='border border-info bg-dark'>
-                    <a href='#cart'> Your Cart <Badge text="white">0</Badge></a>
+                <button onClick={props.cartHandler} text='white' className='border border-info bg-dark'>
+                    <ion-icon  name="cart-outline"></ion-icon>
+                    <a href='#cart'> Your Cart <Badge text="white">{cartCtx.count}</Badge></a>
                 </button>
             </div>
         </Navbar>

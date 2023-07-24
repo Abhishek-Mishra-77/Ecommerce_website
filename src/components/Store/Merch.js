@@ -5,6 +5,7 @@ import { ItemProvideContext } from '../Cart/ContextApi/ItemProvider';
 
 const Merch = () => {
 
+
     const cartCtx = useContext(ItemProvideContext);
 
     const productsArr = [
@@ -57,7 +58,7 @@ const Merch = () => {
                     <div className="col" key={product.id}>
                         <h4>{product.title}</h4>
                         <div className="card" style={{ marginTop: '1rem' }} >
-                            <img src={product.imageUrl} className=" card-img-top" alt="..." />
+                            <img src={product.imageUrl} className=" card-img-top image" alt="..." />
                         </div>
 
                         <div>
@@ -66,9 +67,8 @@ const Merch = () => {
                                 float: 'right',
                                 color: 'white',
                                 fontWeight: 'bold',
-                                fontSize: '15px'
-                            }} className="btn btn-info">ADD TO CARD</button>
-
+                                fontSize: '15px',
+                            }} className="btn btn-info btn-primary ">ADD TO CARD</button>
 
                             <span style={{
                                 float: 'left', marginTop: '20px', color: 'black',

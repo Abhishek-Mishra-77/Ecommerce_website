@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import Stack from 'react-bootstrap/stack';
 import CartItem from './CartItem';
@@ -39,16 +39,19 @@ const Cart = (props) => {
             <Offcanvas.Body>
                 <Stack gap={3}>
                     {cartCtx.items.map((product) => (
-                        <CartItem 
+                        <CartItem
                             key={product.id}
                             product={product}
                             imageUrl={product.imageUrl}
                             removeCart={cartCtx.removeCart}
-                            />
+                        />
                     ))
                     }
                     <div className=' card ms-auto fw-bold fs-5'>
-                        Total :  ${cartCtx.totalAmount}
+                        <button type="button" class="btn btn-outline-info" >
+                           <h4> Total :  $ {cartCtx.totalAmount} </h4>
+                        </button>
+                        
                     </div>
                 </Stack>
             </Offcanvas.Body>

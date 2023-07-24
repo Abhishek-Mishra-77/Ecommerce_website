@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { ItemProvideContext } from '../Cart/ContextApi/ItemProvider';
-
 const Music = () => {
 
     const cartCtx = useContext(ItemProvideContext);
@@ -55,7 +54,7 @@ const Music = () => {
                     <div className="col" key={product.id}>
                         <h4>{product.title}</h4>
                         <div className="card" style={{ marginTop: '1rem' }} >
-                            <img src={product.imageUrl} className=" card-img-top" alt="..." />
+                            <img src={product.imageUrl} className=" card-img-top image" alt="..." />
                         </div>
 
                         <div>
@@ -65,7 +64,7 @@ const Music = () => {
                                 color: 'white',
                                 fontWeight: 'bold',
                                 fontSize: '15px'
-                            }} className="btn btn-info">ADD TO CARD</button>
+                            }} className="btn btn-info btn-primary">ADD TO CARD</button>
 
 
                             <span style={{

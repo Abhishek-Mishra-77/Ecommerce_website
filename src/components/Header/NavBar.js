@@ -26,13 +26,13 @@ const NavBar = (props) => {
                         >ABOUT</NavLink>
                     </li>
                 </ul>
-                <button onClick={props.cartHandler} text='white' className=' card  bg-dark'>
-                    <button type="button" class="btn btn-outline-info">
+                {<button onClick={props.cartHandler} text='white' className=' card  bg-dark'>
+                    <button type="button" className="btn btn-outline-info">
                         <ion-icon style={{ marginLeft: '3px', width: '1.5rem' }} name="cart-outline"></ion-icon>
                         Your Cart
                         <Badge style={{ marginLeft: '5px' }} text="white">{cartCtx.count}</Badge>
                     </button>
-                </button>
+                </button>}
             </div>
         </Navbar>
     )

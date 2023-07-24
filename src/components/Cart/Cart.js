@@ -48,7 +48,7 @@ const Cart = (props) => {
                     ))
                     }
                     <div className=' card ms-auto fw-bold fs-5'>
-                        <button type="button" class="btn btn-outline-info" >
+                        <button type="button" className="btn btn-outline-info" >
                            <h4> Total :  $ {cartCtx.totalAmount} </h4>
                         </button>
                         

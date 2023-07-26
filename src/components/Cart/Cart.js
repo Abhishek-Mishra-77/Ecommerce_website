@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import Stack from 'react-bootstrap/stack';
 import CartItem from './CartItem';
-import { ItemProvideContext } from './ContextApi/ItemProvider';
+import { ItemProvideContext } from '../ContextApi/ItemProvider';
 
 const Cart = (props) => {
 
@@ -49,9 +49,9 @@ const Cart = (props) => {
                     }
                     <div className=' card ms-auto fw-bold fs-5'>
                         <button type="button" className="btn btn-outline-info" >
-                           <h4> Total :  $ {cartCtx.totalAmount} </h4>
+                            <h4> Total :  ₹ {cartCtx.totalAmount} </h4>
                         </button>
-                        
+
                     </div>
                 </Stack>
             </Offcanvas.Body>

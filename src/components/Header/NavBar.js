@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Badge from 'react-bootstrap/badge';
 import { NavLink } from 'react-router-dom';
-import { ItemProvideContext } from '../Cart/ContextApi/ItemProvider';
+import { ItemProvideContext } from '../ContextApi/ItemProvider';
 
 
 const NavBar = (props) => {

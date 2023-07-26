@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
-import { ItemProvideContext } from '../Cart/ContextApi/ItemProvider';
+import { ItemProvideContext } from '../ContextApi/ItemProvider';
+import { Link } from 'react-router-dom';
 const Music = () => {
 
     const cartCtx = useContext(ItemProvideContext);
+
 
     const productsArr = [
         {
@@ -54,7 +56,13 @@ const Music = () => {
                     <div className="col" key={product.id}>
                         <h4>{product.title}</h4>
                         <div className="card" style={{ marginTop: '1rem' }} >
-                            <img src={product.imageUrl} className=" card-img-top image" alt="..." />
+                            <Link to='/product-details'>
+                                <img
+                                    src={product.imageUrl}
+                                    onClick={() => cartCtx.productDetailsHandler(product)}
+                                    className=" card-img-top image"
+                                    alt="..." />
+                            </Link>
                         </div>
 
                         <div>
@@ -71,7 +79,7 @@ const Music = () => {
                                 float: 'left', marginTop: '20px', color: 'black',
                                 fontWeight: 'bold',
                                 fontSize: '20px'
-                            }}>${product.price}</span>
+                            }}>₹{product.price}</span>
                         </div>
                     </div>
                 ))}

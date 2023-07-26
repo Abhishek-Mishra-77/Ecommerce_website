@@ -20,8 +20,6 @@ const Contact = () => {
     }
 
 
-
-
     const onSubmitHandler = async (event) => {
         event.preventDefault();
 
@@ -40,8 +38,6 @@ const Contact = () => {
         setEmail('');
         setNumber('');
     }
-
-
 
 
     const myStyle = {

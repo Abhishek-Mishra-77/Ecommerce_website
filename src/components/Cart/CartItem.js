@@ -14,7 +14,7 @@ const CartItem = (props) => {
                     {props.product.title} {" "}
                 </div>
             </div>
-            <div className='lead' style={{ fontWeight: 'bold', marginRight: '24px' }}>${props.product.price}</div>
+            <div className='lead' style={{ fontWeight: 'bold', marginRight: '24px' }}>₹{props.product.price}</div>
             <button type="button" className="btn btn-outline-info lead">{props.product.count}</button>
             <button
                 onClick={() => props.removeCart(props.product.id)}

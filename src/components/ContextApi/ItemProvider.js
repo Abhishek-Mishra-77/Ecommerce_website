@@ -5,8 +5,8 @@ export const ItemProvideContext = createContext();
 const ItemProvider = (props) => {
     const [items, setItems] = useState([]);
     const [count, setCount] = useState(0);
+    const [productDetail, setProductDetail] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
-
 
 
     useEffect(() => {
@@ -14,6 +14,7 @@ const ItemProvider = (props) => {
         let a = 0;
         items.forEach((item) => {
             c = c + item.count;
+            console.log('bdfbshkfbk')
             a += item.count * item.price
         })
         setCount(c);
@@ -67,9 +68,16 @@ const ItemProvider = (props) => {
     }
 
 
+    const productDetailsHandler = (product) => {
+        console.log(product)
+        setProductDetail(product)
+    }
+
+
+
 
     return (
-        <ItemProvideContext.Provider value={{ items, addCartItem, count, totalAmount, removeCart }}>
+        <ItemProvideContext.Provider value={{ items, addCartItem, count, totalAmount, removeCart, productDetailsHandler, productDetail }}>
             {props.children}
         </ItemProvideContext.Provider>
     )

@@ -25,6 +25,10 @@ const NavBar = (props) => {
                         <NavLink to={'/about'} className='nav-link active'
                         >ABOUT</NavLink>
                     </li>
+                    <li className='nav-item'>
+                        <NavLink to={'/contact'} className='nav-link active'
+                        >CONTACT</NavLink>
+                    </li>
                 </ul>
                 {<button onClick={props.cartHandler} text='white' className=' card  bg-dark'>
                     <button type="button" className="btn btn-outline-info">

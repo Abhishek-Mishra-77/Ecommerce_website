@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
 import About from './components/About/About';
 import Home from './components/Home/Home';
+import Contact from './components/Contact/Contact';
 import ItemProvider from './components/Cart/ContextApi/ItemProvider';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -21,8 +22,6 @@ function App() {
   }
 
 
-
-
   return (
     <Router>
       <ItemProvider className='Ecommerce-container'>
@@ -33,6 +32,7 @@ function App() {
           <Route exact path="/" element={<Store />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/home" element={<Home />} />
+          <Route exact path="/contact" element={<Contact />} />
           <Route path='*' element={<h2>No Found</h2>} />
         </Routes>
         <Footer />

@@ -56,10 +56,9 @@ const Music = () => {
                     <div className="col" key={product.id}>
                         <h4>{product.title}</h4>
                         <div className="card" style={{ marginTop: '1rem' }} >
-                            <Link to='/product-details'>
+                            <Link to={`/${product.id}`} state={{product}}>
                                 <img
                                     src={product.imageUrl}
-                                    onClick={() => cartCtx.productDetailsHandler(product)}
                                     className=" card-img-top image"
                                     alt="..." />
                             </Link>

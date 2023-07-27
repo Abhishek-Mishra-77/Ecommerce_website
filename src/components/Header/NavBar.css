@@ -1,0 +1,11 @@
+.navbar-main{
+
+}
+
+
+@media screen and (max-width: 993px) {
+    .cart_button{
+        width: 3rem;
+    }
+  }
+  

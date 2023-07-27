@@ -11,7 +11,7 @@ const NavBar = (props) => {
 
 
     return (
-        <Navbar className='navbar navbar-expand navbar-dark bg-dark'>
+        <Navbar className='navbar navbar-expand navbar-dark bg-dark navbar-main' style={{ width: '100%' }}>
             <div className='container'>
                 <ul className='navbar-nav' style={{ marginRight: '20rem' }}>
                     <li className='nav-item'>
@@ -30,8 +30,8 @@ const NavBar = (props) => {
                         >CONTACT</NavLink>
                     </li>
                 </ul>
-                {<button onClick={props.cartHandler} text='white' className=' card  bg-dark'>
-                    <button type="button" className="btn btn-outline-info">
+                {<button onClick={props.cartHandler} text='white' className=' card  bg-dark '>
+                    <button type="button" className="btn btn-outline-info cart_button">
                         <ion-icon style={{ marginLeft: '3px', width: '1.5rem' }} name="cart-outline"></ion-icon>
                         Your Cart
                         <Badge style={{ marginLeft: '5px' }} text="white">{cartCtx.count}</Badge>

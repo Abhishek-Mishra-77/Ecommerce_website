@@ -8,7 +8,6 @@ const Merch = () => {
 
 
     const cartCtx = useContext(ItemProvideContext);
-    console.log(cartCtx)
 
     const productsArr = [
         {
@@ -50,6 +49,7 @@ const Merch = () => {
     ]
 
 
+
     return (
         <div className='container text-center' style={{ marginTop: '8rem' }}>
             <div>
@@ -60,9 +60,8 @@ const Merch = () => {
                     <div className="col" key={product.id}>
                         <h4>{product.title}</h4>
                         <div className="card" style={{ marginTop: '1rem' }} >
-                            <Link to='/product-details'>
+                            <Link to={`/${product.id}`} state={{ product }}>
                                 <img
-                                    onClick={() => cartCtx.productDetailsHandler(product)}
                                     src={product.imageUrl}
                                     className=" card-img-top image"
                                     alt="..." />

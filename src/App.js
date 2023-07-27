@@ -31,7 +31,7 @@ function App() {
         {openCart && <Cart cartHandler={cartHandler} />}
         <Routes>
           <Route exact path="/" element={<Store />} />
-          <Route exact path='product-details' element={<ProductDetail />} />
+          <Route exact path='/:id' element={<ProductDetail />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/contact" element={<Contact />} />

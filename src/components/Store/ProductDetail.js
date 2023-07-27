@@ -1,8 +1,13 @@
 import React, { useContext } from 'react';
-import './ProductDetail.css';
+import { useParams, useLocation } from 'react-router-dom';
 import { ItemProvideContext } from '../ContextApi/ItemProvider';
+import './ProductDetail.css';
+
 
 const ProductDetail = () => {
+
+    const { id } = useParams();
+    const data = useLocation().state.product;
 
     const cartCtx = useContext(ItemProvideContext);
 
@@ -13,36 +18,35 @@ const ProductDetail = () => {
             <div className='product-detail'>
                 <div className='image-content'>
                     <div className='image1 mt-3'>
-                        <div class="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
-                            <img style={{ width: '3rem', height: '2rem' }} src='https://media.istockphoto.com/id/1185382671/vector/abstract-blurred-colorful-background.jpg?s=612x612&w=0&k=20&c=3YwJa7lCw-cQ-hviINULUokL9lYU4RuGjMP_E_0N8E4=' />
+                        <div className="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
 
                         </div>
-                        <div class="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
-                            <div class="card-body">
+                        <div className="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
+                            <div className="card-body">
 
                             </div>
-                        </div> <div class="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
-                            <div class="card-body">
+                        </div> <div className="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
+                            <div className="card-body">
 
                             </div>
-                        </div> <div class="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
-                            <div class="card-body">
+                        </div> <div className="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
+                            <div className="card-body">
 
                             </div>
-                        </div> <div class="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
-                            <div class="card-body">
+                        </div> <div className="card mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
+                            <div className="card-body">
 
                             </div>
                         </div>
-                        <div class="card text-center mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
-                            <div class="card-body">
+                        <div className="card text-center mb-3" style={{ width: '5rem', height: '4rem', marginLeft: '1rem' }}>
+                            <div className="card-body">
                             </div>
                         </div>
-                        <img src={cartCtx.productDetail.imageUrl}></img>
+                        <img src={data.imageUrl}></img>
                     </div>
                     <div className='mt-2'>
                         <button
-                            onClick={() => cartCtx.addCartItem(cartCtx.productDetail)}
+                            onClick={() => cartCtx.addCartItem(data)}
                             href="#"
                             style={{
                                 marginTop: '-3rem',
@@ -70,9 +74,9 @@ const ProductDetail = () => {
                 </div>
                 <div className='reveiw-content m-3'>
                     <div className='reveiw-content-detail'>
-                        <h3>{cartCtx.productDetail.title} </h3>
+                        <h3>{data.title} </h3>
                         <p>Men Full Sleeve Printed Hooded Sweatshirt</p>
-                        <h2>₹{cartCtx.productDetail.price} {"     ,"} <small className='text-success'>73% off</small> </h2>
+                        <h2>₹ {data.price} {"     ,"} <small className='text-success'>73% off</small> </h2>
                     </div>
                     <div className='review-contect-rating'>
                         <img className='icon-star' src='https://cdn-icons-png.flaticon.com/128/3334/3334338.png'></img><span className='text-secondary'>13,148 ratings and 1,357 reviews</span>
@@ -126,7 +130,7 @@ const ProductDetail = () => {
                     <div className='line'></div>
                     <div className=' card ms-auto fw-bold fs-5 mt-5'>
                         <button type="button" className="btn btn-outline-info" >
-                            <h4> Total :  ₹{cartCtx.productDetail.price} </h4>
+                            <h4> Total :  ₹{data.price}</h4>
                         </button>
 
                     </div>

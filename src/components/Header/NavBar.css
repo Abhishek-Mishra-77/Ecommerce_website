@@ -1,11 +1,53 @@
-.navbar-main{
+.navbar {
+  width: 100%;
+  height: 5rem;
+  background-color: #38015c;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12%;
+}
 
+.logo {
+  font-family: "Lato", sans-serif;
+  font-size: 2rem;
+  color: white;
+  margin-left: 2rem;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.navbar li {
+  margin: 0 1rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.navbar button {
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+.badge{
+    margin-left: 1rem;
+}
+
+.navbar a:hover {
+  color: #c291e2;
 }
 
 
-@media screen and (max-width: 993px) {
-    .cart_button{
-        width: 3rem;
-    }
-  }
-  

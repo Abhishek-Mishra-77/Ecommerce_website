@@ -6,8 +6,9 @@ import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
 import About from './components/About/About';
 import Home from './components/Home/Home';
+import Login from './components/Authentication/Login';
 import Contact from './components/Contact/Contact';
-import ItemProvider from './components/ContextApi/ItemProvider';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetail from './components/Store/ProductDetail';
 
@@ -25,9 +26,9 @@ function App() {
 
   return (
     <Router>
-      <ItemProvider className='Ecommerce-container'>
+      <section className='Ecommerce-container'>
         <NavBar cartHandler={cartHandler} />
-        <Header />
+       {! <Header />}
         {openCart && <Cart cartHandler={cartHandler} />}
         <Routes>
           <Route exact path="/" element={<Store />} />
@@ -35,10 +36,11 @@ function App() {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/contact" element={<Contact />} />
+          <Route exact path='/auth' element={<Login />} />
           <Route path='*' element={<h2>No Found</h2>} />
         </Routes>
         <Footer />
-      </ItemProvider>
+      </section>
     </Router>
   );
 }

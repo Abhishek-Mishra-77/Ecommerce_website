@@ -3,9 +3,11 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ItemProvideContext = createContext();
 
 const ItemProvider = (props) => {
+    const IntianToken = localStorage.getItem('token');
     const [items, setItems] = useState([]);
     const [count, setCount] = useState(0);
     const [totalAmount, setTotalAmount] = useState(0);
+    const [token, setToken] = useState(IntianToken)
 
 
     useEffect(() => {
@@ -66,11 +68,32 @@ const ItemProvider = (props) => {
     }
 
 
+    const loginHandler = (token) => {
+        setToken(token)
+        console.log(token)
+        localStorage.setItem('token', token)
+    }
+
+    const logOutHandler = () => {
+        setToken(null);
+        localStorage.removeItem('token')
+    }
+
+
+    const contextValue = {
+        items: items,
+        addCartItem: addCartItem,
+        count: count,
+        totalAmount: totalAmount,
+        removeCart: removeCart,
+        loginHandler: loginHandler,
+        logOutHandler: logOutHandler
+    }
 
 
 
     return (
-        <ItemProvideContext.Provider value={{ items, addCartItem, count, totalAmount, removeCart }}>
+        <ItemProvideContext.Provider value={contextValue}>
             {props.children}
         </ItemProvideContext.Provider>
     )

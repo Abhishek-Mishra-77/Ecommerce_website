@@ -44,7 +44,7 @@ const Login = () => {
             if (response.ok) {
                 const data = await response.json();
                 cartCtx.loginHandler(data.idToken)
-                navigate('/')
+                navigate('/store')
             } else {
                 const data = await response.json();
                 let errroMessage = "Authentication fail!"
@@ -73,6 +73,7 @@ const Login = () => {
                         value={enteredEmail}
                         onChange={(e) => setEnteredEmail(e.target.value)}
                         type="email"
+                        required
                         className="form-control"
                         id="exampleInputPassword1" />
                 </div>
@@ -83,6 +84,7 @@ const Login = () => {
                         value={enteredPassword}
                         onChange={(e) => setEnteredpassword(e.target.value)}
                         type="password"
+                        required
                         className="form-control"
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp" />

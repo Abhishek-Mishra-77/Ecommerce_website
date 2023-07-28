@@ -1,13 +1,13 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 export const ItemProvideContext = createContext();
-
 const ItemProvider = (props) => {
     const IntianToken = localStorage.getItem('token');
     const [items, setItems] = useState([]);
     const [count, setCount] = useState(0);
     const [totalAmount, setTotalAmount] = useState(0);
     const [token, setToken] = useState(IntianToken)
+    const isLoggegIn = !!token;
 
 
     useEffect(() => {
@@ -87,6 +87,7 @@ const ItemProvider = (props) => {
         totalAmount: totalAmount,
         removeCart: removeCart,
         loginHandler: loginHandler,
+        isLoggegIn: isLoggegIn,
         logOutHandler: logOutHandler
     }
 

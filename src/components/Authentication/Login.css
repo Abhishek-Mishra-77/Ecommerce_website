@@ -6,21 +6,7 @@
   background-color: cyan;
   padding: 1rem;
 }
-/* .auth-button {
-  text-align: center;
-} */
-/* 
-.auth-button button {
-  width: 10rem;
-  font-weight: bold;
-  color: white;
-  font-size: 22px;
-}
-.auth-button p {
-  margin-top: 2rem;
-  color: #9f5ccc;
-  font-size: 22px;
-} */
+
 .actions {
   margin-top: 1.5rem;
   display: flex;
@@ -35,11 +21,12 @@
 .actions button {
   cursor: pointer;
   font: inherit;
+
   color: white;
   background-color: #9f5ccc;
   border: 1px solid #9f5ccc;
   border-radius: 4px;
-  padding: 0.5rem 2.5rem;
+  padding: 0.5rem 4rem;
 }
 
 .actions button:hover {

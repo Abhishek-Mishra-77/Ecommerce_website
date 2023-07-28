@@ -8,6 +8,7 @@ import About from './components/About/About';
 import Home from './components/Home/Home';
 import Login from './components/Authentication/Login';
 import Contact from './components/Contact/Contact';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetail from './components/Store/ProductDetail';
@@ -28,16 +29,20 @@ function App() {
     <Router>
       <section className='Ecommerce-container'>
         <NavBar cartHandler={cartHandler} />
-       {! <Header />}
+        {! <Header />}
         {openCart && <Cart cartHandler={cartHandler} />}
         <Routes>
-          <Route exact path="/" element={<Store />} />
+          <Route exact path='/auth' element={<Login />} />
           <Route exact path='/:id' element={<ProductDetail />} />
           <Route exact path="/about" element={<About />} />
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route exact path="/contact" element={<Contact />} />
-          <Route exact path='/auth' element={<Login />} />
           <Route path='*' element={<h2>No Found</h2>} />
+
+          <Route path='/store' element={<PrivateRoute />}>
+            <Route exact path="/store" element={<Store />} />
+          </Route>
+
         </Routes>
         <Footer />
       </section>

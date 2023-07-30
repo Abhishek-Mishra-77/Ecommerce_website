@@ -14,6 +14,9 @@ const NavBar = (props) => {
         <header className='navbar'>
             <nav>
                 <ul>
+                    <li className='logo1'>
+                       <h2> <NavLink to={'/'}>The Generics</NavLink></h2>
+                    </li>
                     <li>
                         <NavLink to={'/'}>HOME</NavLink>
                     </li>

@@ -10,7 +10,7 @@ const Home = () => {
     <div>
       <div>
         <div className=' bg-info text-center head'>
-          <button type="button" className="btn btn-outline-dark button1">Get out Latest Album</button>
+          <button type="button" className="btn btn-outline-dark button1" style={{marginTop:'1.5rem'}}>Get out Latest Album</button>
         </div>
         <div className=' bg-info text-center head'>
           <button type="button" className="btn button">►</button>

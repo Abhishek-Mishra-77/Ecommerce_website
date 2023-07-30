@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { ItemProvideContext } from '../ContextApi/ItemProvider';
 import './Login.css';
+
+
 
 
 const Login = () => {
@@ -43,7 +45,7 @@ const Login = () => {
             setIsLoading(false)
             if (response.ok) {
                 const data = await response.json();
-                cartCtx.loginHandler(data.idToken)
+                cartCtx.loginHandler(data)
                 navigate('/store')
             } else {
                 const data = await response.json();
@@ -59,6 +61,7 @@ const Login = () => {
         }
         setEnteredpassword('')
     }
+
 
 
     return (
@@ -95,12 +98,23 @@ const Login = () => {
                     <button
                         type='button'
                         className='toggle'
-                        onClick={switchAuthModeHandler}
-                    >
+                        onClick={switchAuthModeHandler}>
                         {isLogin ? 'Create new account' : 'Login with existing account'}
                     </button>
                 </div>
             </form>
+            <button
+                onClick={cartCtx.logOutHandler}
+                style={{ float: 'right' }}
+                type="button"
+                class="btn btn-outline-danger">Logout</button>
+            <NavLink to={'/auth/user'}>
+                <button
+                    type='button'
+                    className='toggle'>
+                    {<h6>change your password</h6>}
+                </button>
+            </NavLink>
         </div>
     )
 }

@@ -56,7 +56,7 @@ const Music = () => {
                     <div className="col" key={product.id}>
                         <h4>{product.title}</h4>
                         <div className="card" style={{ marginTop: '1rem' }} >
-                            <Link to={`/${product.id}`} state={{product}}>
+                            <Link to={`/store/${product.id}`} state={{product}}>
                                 <img
                                     src={product.imageUrl}
                                     className=" card-img-top image"

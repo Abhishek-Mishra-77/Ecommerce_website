@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NavBar from './components/Header/NavBar';
-import Header from './components/Header/Header';
+// import Header from './components/Header/Header';
 import Store from './components/Store/Store';
 import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
@@ -9,6 +9,7 @@ import Home from './components/Home/Home';
 import Login from './components/Authentication/Login';
 import Contact from './components/Contact/Contact';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import ChangePassword from './components/Authentication/ChangePassword';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetail from './components/Store/ProductDetail';
@@ -29,20 +30,19 @@ function App() {
     <Router>
       <section className='Ecommerce-container'>
         <NavBar cartHandler={cartHandler} />
-        {! <Header />}
+        {/* <Header />  */}
         {openCart && <Cart cartHandler={cartHandler} />}
         <Routes>
           <Route exact path='/auth' element={<Login />} />
-          <Route exact path='/:id' element={<ProductDetail />} />
+          <Route exact path='/auth/user' element={<ChangePassword />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/" element={<Home />} />
           <Route exact path="/contact" element={<Contact />} />
-          <Route path='*' element={<h2>No Found</h2>} />
-
-          <Route path='/store' element={<PrivateRoute />}>
+          {<Route path='/store' element={<PrivateRoute />}>
             <Route exact path="/store" element={<Store />} />
-          </Route>
-
+            <Route exact path='/store/:id' element={<ProductDetail />} />
+          </Route>}
+          <Route exact path='*' element={<Home />} />
         </Routes>
         <Footer />
       </section>

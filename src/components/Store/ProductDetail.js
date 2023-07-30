@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Navigate } from 'react-router-dom';
 import { ItemProvideContext } from '../ContextApi/ItemProvider';
 import './ProductDetail.css';
 
@@ -7,10 +7,15 @@ import './ProductDetail.css';
 const ProductDetail = () => {
 
     const { id } = useParams();
-    const data = useLocation().state.product;
-
     const cartCtx = useContext(ItemProvideContext);
-
+    const productDetails = useLocation();
+    console.log(productDetails)
+    
+    if(!productDetails.state) {
+         return <Navigate to="/" />;
+    }
+    const data = productDetails.state.product;
+  
 
 
     return (

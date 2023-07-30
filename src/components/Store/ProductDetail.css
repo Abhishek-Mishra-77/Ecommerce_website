@@ -1,5 +1,6 @@
 .product-detail {
   display: flex;
+  margin-top: 1rem;
 }
 .image-content {
   width: 600px;
@@ -15,13 +16,6 @@
   margin-left: 23%;
   height: 450px;
   margin-top: -33rem;
-}
-
-@media screen and (max-width: 1397px) {
-  .image1 img {
-    width: 350px;
-    margin-left: 23%;
-  }
 }
 
 .reveiw-content {
@@ -71,4 +65,18 @@
 .img3 img {
   width: 5rem;
   height: 4rem;
+}
+
+@media screen and (max-width: 1397px) {
+  .image1 img {
+    width: 350px;
+    margin-left: 23%;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .image-content {
+    width: 550px;
+    height: 550px;
+  }
 }

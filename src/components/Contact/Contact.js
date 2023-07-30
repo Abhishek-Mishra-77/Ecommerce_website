@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './Contact.css';
 
 const Contact = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [number, setNumber] = useState('');
-
+    const [textArea, setTextArea] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
 
     const postContactData = async (contact) => {
@@ -41,17 +43,18 @@ const Contact = () => {
 
 
     const myStyle = {
-        width: '45%',
-        height: '27rem',
+        width: '50%',
+        maxHeight: 'fit-content',
         boxShadow: '0px 0px 20px 0px cyan',
         borderColor: 'cyan',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginTop: '6rem'
     }
 
 
 
     return (
-        <div className='container' style={myStyle} onSubmit={onSubmitHandler}>
+        <div className='container mt-5' style={myStyle} onSubmit={onSubmitHandler}>
             <div className='text-center mt-4'>
                 <h2>𝘾𝙤𝙣𝙩𝙖𝙘𝙩 𝙐𝙨</h2>
             </div>
@@ -85,7 +88,20 @@ const Contact = () => {
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp" />
                 </div>
-                <button type="submit" className="btn btn-info btn-primary ">Submit</button>
+                <div className="mb-4">
+                    <label htmlFor="exampleInputEmail1" className="form-label">Message :</label>
+                    <textarea
+                        rows='9'
+                        value={textArea}
+                        onChange={(e) => setTextArea(e.target.value)}
+                        type="text"
+
+                        className="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp" >
+                    </textarea>
+                </div>
+                <button style={{ marginBlock: '2rem' }} type="submit" className="btn btn-info btn-primary ">Submit</button>
             </form>
         </div>
     )

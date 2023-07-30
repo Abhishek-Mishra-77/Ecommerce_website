@@ -16,6 +16,10 @@
   margin-left: 2rem;
 }
 
+.logo1 {
+  margin-left: -2rem;
+}
+
 .navbar ul {
   list-style: none;
   margin: 0;
@@ -42,12 +46,100 @@
   margin-right: 2rem;
   cursor: pointer;
 }
-.badge{
-    margin-left: 1rem;
+.badge {
+  margin-left: 1rem;
 }
 
 .navbar a:hover {
   color: #c291e2;
 }
 
+@media screen and (max-width: 855px) {
+  .navbar li {
+    margin: 0 0.5rem;
+    font-size: 16px;
+  }
+  .navbar button {
+    padding: 0.5rem 0.2rem;
+  }
+  .logo1 {
+    font-size: 18px;
+    margin-left: -1.5rem;
+  }
+}
 
+@media screen and (max-width: 710px) {
+  .navbar li {
+    margin: 0 0.5rem;
+    font-size: 14px;
+  }
+  .navbar button {
+    padding: 0.3rem 0.2rem;
+  }
+  .logo1 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 666px) {
+  .navbar li {
+    margin: 0 0.5rem;
+    font-size: 11px;
+  }
+  .navbar button {
+    padding: 0.1 0.2rem;
+  }
+  .logo1 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .navbar li {
+    margin: 0 0.4rem;
+    font-size: 9px;
+  }
+  .navbar button {
+    padding: 0rem 0.1rem;
+  }
+  .logo1 h2  {
+    font-size: 22px;
+  }
+
+  .navbar {
+    width: 105%;
+  }
+}
+@media screen and (max-width: 510px) {
+  .navbar li {
+    margin: 0 0.3rem;
+    font-size: 8px;
+  }
+  .navbar button {
+    padding: 0rem 0.1rem;
+  }
+  .logo1 h2  {
+    font-size: 22px;
+  }
+  .navbar {
+    width: 120%;
+  }
+}
+
+
+@media screen and (max-width: 415px) {
+  .navbar li {
+    margin: 0 0.3rem;
+    font-size: 7px;
+  }
+  .navbar button {
+    padding: 0rem 0.1rem;
+    margin-right: 1rem;
+  }
+  .logo1 h2  {
+    font-size: 14px;
+  }
+  .navbar {
+    width: 120%;
+  }
+}

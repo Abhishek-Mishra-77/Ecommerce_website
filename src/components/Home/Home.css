@@ -57,3 +57,26 @@
   border-color: 2px solid cyan;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
+@media screen and (max-width: 615px) {
+   .head{
+    width: 105%;
+   }
+   .container{
+    width: 105%;
+   }
+  
+} 
+
+@media screen and (max-width: 510px) {
+  .head{
+   width: 120%;
+  }
+  
+.buy-btn {
+  padding: 10px;
+  margin-left: 11px
+}
+} 
+

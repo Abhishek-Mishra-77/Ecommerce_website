@@ -130,7 +130,6 @@ const ItemProvider = (props) => {
 
                         if (response.ok) {
                             const data = await response.json();
-                            console.log('post')
                         }
                         else {
                             const data = await response.json();
@@ -159,7 +158,6 @@ const ItemProvider = (props) => {
 
                         if (response.ok) {
                             const data = await response.json();
-                            console.log('put')
 
                         }
                         else {
@@ -242,7 +240,6 @@ const ItemProvider = (props) => {
                 const data = await response.json();
                 const dataItem = Object.values(data).find((item) => item.id === id);
                 const uniqueId = Object.keys(data).find((key) => data[key] === dataItem)
-                console.log(uniqueId)
 
                 const response1 = await fetch(`https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}/${uniqueId}.json`, {
                     method: 'DELETE',
@@ -252,7 +249,6 @@ const ItemProvider = (props) => {
                 })
                 if (response1.ok) {
                     const data = await response1.json();
-                    console.log('delete', data)
                 }
                 else {
                     const data = await response1.json();
@@ -262,9 +258,6 @@ const ItemProvider = (props) => {
                     }
                     throw new Error(errorMessage);
                 }
-            }
-            else {
-                console.log('errr')
             }
         }
         catch (error) {

@@ -107,7 +107,7 @@ const Login = () => {
                 onClick={cartCtx.logOutHandler}
                 style={{ float: 'right' }}
                 type="button"
-                class="btn btn-outline-danger">Logout</button>
+                className="btn btn-outline-danger">Logout</button>
             <NavLink to={'/auth/user'}>
                 <button
                     type='button'

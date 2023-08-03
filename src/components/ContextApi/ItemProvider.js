@@ -30,9 +30,29 @@ const ItemProvider = (props) => {
         if (isLoggegIn) {
             const modifiedEmail = email.replace(/[@.]/g, '');
             const fetchData = async () => {
-                const response = await axios.get(`https://crudcrud.com/api/018d8eb8f0f8498a87416ababcfe3fe9/cart${modifiedEmail}`);
-                console.log(response.data)
-                setItems(response.data)
+                try {
+                    const response = await fetch(`https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}.json`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+
+
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        const dataItems = Object.values(data);
+                        setItems(dataItems)
+                    }
+                    else {
+                        const data = await response.json();
+                        console.log(data)
+                    }
+                }
+                catch (error) {
+                    console.log(error)
+                }
             }
             fetchData();
         }
@@ -60,7 +80,14 @@ const ItemProvider = (props) => {
                     return [...restItem, currentItem];
                 }
                 else {
-                    return [...restItem, newItem];
+                    const newItems = {
+                        id: id,
+                        count: 1,
+                        imageUrl: itemm.imageUrl,
+                        price: itemm.price,
+                        title: itemm.title
+                    }
+                    return [...restItem, newItems];
                 }
             }
             else {
@@ -72,32 +99,124 @@ const ItemProvider = (props) => {
 
 
         try {
-            const response = await axios.get(`https://crudcrud.com/api/018d8eb8f0f8498a87416ababcfe3fe9/cart${modifiedEmail}`);
-            const existingCartItems = response.data;
-            const data = existingCartItems.find((item) => {
-                return item.id === newItem.id;
-            });
 
-            if (!data) {
-                const response = await axios.post(`https://crudcrud.com/api/018d8eb8f0f8498a87416ababcfe3fe9/cart${modifiedEmail}`, newItem)
-                console.log('post', response.data)
+            if (items.length > 0) {
+                const response = await fetch(`https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}.json`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const dataItems = Object.values(data).find((item) => item.id === id);
+
+
+                    if (!dataItems) {
+                        const response = await fetch(`https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}.json`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id: id,
+                                count: 1,
+                                imageUrl: itemm.imageUrl,
+                                price: itemm.price,
+                                title: itemm.title
+                            })
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            console.log('post')
+                        }
+                        else {
+                            const data = await response.json();
+                            let errorMessage = 'Post Request fail';
+                            if (data && data.error && data.error.message) {
+                                errorMessage = data.error.message;
+                            }
+                            throw new Error(errorMessage);
+                        }
+                    }
+                    else {
+                        const uniqueId = Object.keys(data).find((key) => data[key] === dataItems)
+                        const response = await fetch(`https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}/${uniqueId}.json`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id: id,
+                                count: dataItems.count + 1,
+                                imageUrl: itemm.imageUrl,
+                                price: itemm.price,
+                                title: itemm.title
+                            })
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            console.log('put')
+
+                        }
+                        else {
+                            const data = await response.json();
+                            let errorMessage = 'Put Request fail';
+                            if (data && data.error && data.error.message) {
+                                errorMessage = data.error.message;
+                            }
+                            throw new Error(errorMessage);
+
+                        }
+                    }
+                }
+                else {
+                    const data = await response.json();
+                    let errorMessage = 'Get Request fail';
+                    if (data && data.error && data.error.message) {
+                        errorMessage = data.error.message;
+                    }
+                    throw new Error(errorMessage);
+                }
             }
             else {
-                const updatedData = {
-                    id: data.id,
-                    count: data.count + 1,
-                    imageUrl: data.imageUrl,
-                    price: data.price,
-                    title: data.title
-                };
-                const response = await axios.put(`https://crudcrud.com/api/018d8eb8f0f8498a87416ababcfe3fe9/cart${modifiedEmail}/${data._id}`, updatedData)
-                console.log('put', response.data)
-            }
-        } catch (error) {
-            console.error(error);
-        }
+                const response = await fetch(`https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}.json`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: id,
+                        count: 1,
+                        imageUrl: itemm.imageUrl,
+                        price: itemm.price,
+                        title: itemm.title
+                    })
+                });
 
+                if (response.ok) {
+                    const data = await response.json();
+                }
+                else {
+                    const data = await response.json();
+                    let errorMessage = 'Post Request fail';
+                    if (data && data.error && data.error.message) {
+                        errorMessage = data.error.message;
+                    }
+                    throw new Error(errorMessage);
+                }
+            }
+        }
+        catch (error) {
+            alert(error.message)
+            console.log(error.message);
+        }
     }
+
+
 
 
 
@@ -109,19 +228,47 @@ const ItemProvider = (props) => {
             return restItem;
         })
 
+
         const modifiedEmail = email.replace(/[@.]/g, '');
         try {
-            const response = await axios.get(`https://crudcrud.com/api/018d8eb8f0f8498a87416ababcfe3fe9/cart${modifiedEmail}`);
-            const gettingData = response.data.find((item) => {
-                return item.id === id;
+            const response = await fetch(`https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}.json`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
-            if (gettingData) {
-                const response = await axios.delete(`https://crudcrud.com/api/018d8eb8f0f8498a87416ababcfe3fe9/cart${modifiedEmail}/${gettingData._id}`);
-               console.log(response.data)
+
+            if (response.ok) {
+                const data = await response.json();
+                const dataItem = Object.values(data).find((item) => item.id === id);
+                const uniqueId = Object.keys(data).find((key) => data[key] === dataItem)
+                console.log(uniqueId)
+
+                const response1 = await fetch(`https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}/${uniqueId}.json`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'applications/json'
+                    }
+                })
+                if (response1.ok) {
+                    const data = await response1.json();
+                    console.log('delete', data)
+                }
+                else {
+                    const data = await response1.json();
+                    let errorMessage = 'Delete Request fail';
+                    if (data && data.error && data.error.message) {
+                        errorMessage = data.error.message;
+                    }
+                    throw new Error(errorMessage);
+                }
+            }
+            else {
+                console.log('errr')
             }
         }
         catch (error) {
-            console.log(error)
+            console.log(error.message)
         }
     }
 

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas'
-import Stack from 'react-bootstrap/stack';
+import { Stack } from 'react-bootstrap';
 import CartItem from './CartItem';
 import { ItemProvideContext } from '../ContextApi/ItemProvider';
 

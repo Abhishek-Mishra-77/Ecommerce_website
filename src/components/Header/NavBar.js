@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Badge from 'react-bootstrap/badge';
+import { Badge } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './NavBar.css'
 import { ItemProvideContext } from '../ContextApi/ItemProvider';
@@ -15,7 +15,7 @@ const NavBar = (props) => {
             <nav>
                 <ul>
                     <li className='logo1'>
-                       <h2> <NavLink to={'/'}>The Generics</NavLink></h2>
+                        <h2> <NavLink to={'/'}>The Generics</NavLink></h2>
                     </li>
                     <li>
                         <NavLink to={'/'}>HOME</NavLink>

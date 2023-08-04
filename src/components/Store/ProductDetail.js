@@ -8,7 +8,6 @@ const ProductDetail = () => {
 
     const { id } = useParams();
     const cartCtx = useContext(ItemProvideContext);
-    console.log(cartCtx)
     const productDetails = useLocation();
     
     if(!productDetails.state) {

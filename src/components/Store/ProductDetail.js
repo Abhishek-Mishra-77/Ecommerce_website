@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import { useParams, useLocation, Navigate } from 'react-router-dom';
 import { ItemProvideContext } from '../ContextApi/ItemProvider';
 import './ProductDetail.css';
+import { useNavigate } from 'react-router-dom';
+import StripeCheckout from 'react-stripe-checkout';
+
 
 
 const ProductDetail = () => {
 
     const { id } = useParams();
+    const navigate = useNavigate();
     const cartCtx = useContext(ItemProvideContext);
     const productDetails = useLocation();
 
@@ -15,6 +19,11 @@ const ProductDetail = () => {
     }
     const data = productDetails.state.product;
 
+    const onToken = (token) => {
+        navigate("/paymentdone")
+        localStorage.setItem("paymentInfo", JSON.stringify(token))
+        localStorage.setItem("amount", JSON.stringify(data.price))
+    }
 
 
     return (
@@ -48,7 +57,7 @@ const ProductDetail = () => {
                         </div>
                         <img src={data.imageUrl}></img>
                     </div>
-                    <div className='mt-2'>
+                    <div className='mt-2' style={{ display: "flex" }}>
                         <button
                             onClick={() => cartCtx.addCartItem(data)}
                             href="#"
@@ -62,18 +71,32 @@ const ProductDetail = () => {
                             <ion-icon name="cart-outline"></ion-icon>
                             ADD TO CARD
                         </button>
-                        <button href="#" style={{
-                            marginTop: '-3rem',
-                            marginLeft: '2rem',
-                            color: 'white',
-                            fontWeight: 'bold',
-                            fontSize: '22px',
+                        <StripeCheckout
+                            description={"Payment Done"}
+                            image="https://www.compliancesigns.com/media/catalog/product/p/a/payment-policies-sign-nhe-17964_1000.gif"
+                            ComponentClass="div"
+                            currency="INR"
+                            amount={data.price * 100}  // Multiply by 100 to convert rupees to paise
+                            allowRememberMe
+                            token={onToken}
+                            shippingAddress
+                            billingAddress={false}
+                            stripeKey="pk_test_51OKItmSIeTa6z5FVc03TQk2ilyBGtK9EYPds8a3rq2SEFpQ0kRS7BwoL4BQn69OF86a2XkULaReKTlsE1PrLJwqq007edzU8ao"
+                        >
+                            <button href="#" style={{
+                                marginTop: '-3rem',
+                                marginLeft: '2rem',
+                                color: 'white',
+                                fontWeight: 'bold',
+                                fontSize: '22px',
 
-                        }}
-                            className="btn btn-info btn-primary">
+                            }}
+                                className="btn btn-info btn-primary">
 
-                            BUY NOW
-                        </button>
+                                BUY NOW
+                            </button>
+                        </StripeCheckout>
+
                     </div>
                 </div>
                 <div className='reveiw-content m-3'>

@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 const PaymentDone = () => {
 
-   const paymentInfo = JSON.parse(localStorage.getItem("paymentInfo"))
+    const paymentInfo = JSON.parse(localStorage.getItem("paymentInfo"))
+    const amount = JSON.parse(localStorage.getItem("amount"))
     const navigate = useNavigate();
     const moveToShopHandler = () => {
         navigate('/')
@@ -34,11 +35,11 @@ const PaymentDone = () => {
                     </div>
                     <div className='payment-info-right'>
                         <p>ATM Card</p>
-                        <p>{paymentInfo.email}</p>
+                        <p>{paymentInfo.card?.name}</p>
                         <p>{paymentInfo.created}</p>
                         <p>{paymentInfo.email}</p>
                         <p>{paymentInfo.card.address_city}</p>
-                        <p>{paymentInfo.AmountPaid}</p>
+                        <p>{amount} Rs</p>
                         <p>{paymentInfo.id}</p>
                     </div>
                 </div>

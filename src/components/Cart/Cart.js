@@ -21,6 +21,7 @@ const Cart = (props) => {
         navigate("/paymentdone")
         props.cartHandler();
         localStorage.setItem("paymentInfo", JSON.stringify(token))
+        localStorage.setItem("amount", JSON.stringify(cartCtx?.totalAmount))
     }
     return (
         <Offcanvas className='mt-5 close-Button' style={myStyle} show={true} placement='end '>
@@ -29,7 +30,7 @@ const Cart = (props) => {
                 type="button"
                 className="btn-close"
 
-                onClick={props.cartHandler }
+                onClick={props.cartHandler}
                 style={{
                     marginLeft: '30rem',
                     marginTop: "-1rem",
@@ -65,7 +66,7 @@ const Cart = (props) => {
                             image="https://www.compliancesigns.com/media/catalog/product/p/a/payment-policies-sign-nhe-17964_1000.gif"
                             ComponentClass="div"
                             currency="INR"
-                            amount={cartCtx?.totalAmount}
+                            amount={cartCtx?.totalAmount * 100}  // Multiply by 100 to convert rupees to paise
                             allowRememberMe
                             token={onToken}
                             shippingAddress
@@ -76,6 +77,7 @@ const Cart = (props) => {
                                 <h4> PROCEED TO CHECKOUT </h4>
                             </button>
                         </StripeCheckout>
+
 
                     </div>
                 </Stack>

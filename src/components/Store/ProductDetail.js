@@ -9,12 +9,12 @@ const ProductDetail = () => {
     const { id } = useParams();
     const cartCtx = useContext(ItemProvideContext);
     const productDetails = useLocation();
-    
-    if(!productDetails.state) {
-         return <Navigate to="/" />;
+
+    if (!productDetails.state) {
+        return <Navigate to="/" />;
     }
     const data = productDetails.state.product;
-  
+
 
 
     return (

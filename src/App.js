@@ -1,6 +1,5 @@
 import React, { useState, Suspense } from 'react';
 import NavBar from './components/Header/NavBar';
-// import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
 import About from './components/About/About';
@@ -12,6 +11,7 @@ import ChangePassword from './components/Authentication/ChangePassword';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetail from './components/Store/ProductDetail';
 import Store from './components/Store/Store';
+import PaymentDone from './components/PaymentDone/PaymentDone';
 // const ProductDetail = React.lazy(() => import('./components/Store/ProductDetail'))
 // const Store = React.lazy(() => import('./components/Store/Store'));
 
@@ -41,6 +41,7 @@ function App() {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/" element={<Home />} />
           <Route exact path="/contact" element={<Contact />} />
+          <Route exact path='/paymentDone' element={<PaymentDone />} />
           <Route path='/store' element={<PrivateRoute />}>
             <Route path="/store" element={<Store />} />
             <Route exact path='/store/:id' element={<ProductDetail />} />

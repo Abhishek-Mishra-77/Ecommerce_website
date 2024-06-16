@@ -30,16 +30,3 @@ export default CartItem;
 
 
 
-{/* <footer className='navbar navbar-expand '>
-<div className='container'>
-    <ul className='navbar-nav'>
-        <li className='nav-item'  style={myStyle}>
-            <span>{product.title}</span>
-        </li>
-        <li className='nav-item' style={myStyle}>
-        <span>${product.price}</span>
-        </li>
-      
-    </ul>
-</div>
-</footer> */}

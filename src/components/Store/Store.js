@@ -1,11 +1,14 @@
 import React, { Fragment } from 'react';
-import Music from './Music';
-import Merch from './Merch';
+import Kids from './Kids';
+import Mens from './Mens';
+import Ladies from './Ladies';
+
 const Store = () => {
     return (
         <Fragment>
-            <Music />
-            <Merch />
+            <Kids />
+            <Mens />
+            <Ladies />
         </Fragment>
     )
 }

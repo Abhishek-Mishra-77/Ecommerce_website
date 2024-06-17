@@ -20,6 +20,7 @@ const ItemProvider = (props) => {
         })
 
         setCount(c);
+        console.log(a);
         setTotalAmount(a);
     }, [items])
 

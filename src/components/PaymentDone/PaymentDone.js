@@ -14,11 +14,10 @@ const PaymentDone = () => {
   };
 
   const handlePrint = async () => {
-    const element = document.documentElement; // Capture the entire page
+    const element = document.documentElement;
 
-    // Ensure the entire page content is captured
     const canvas = await html2canvas(element, {
-      scale: 2, // Increase the scale to improve quality
+      scale: 2,
       scrollX: 0,
       scrollY: 0,
       width: element.scrollWidth,
@@ -27,7 +26,6 @@ const PaymentDone = () => {
 
     const imgData = canvas.toDataURL("image/png");
 
-    // Calculate PDF dimensions
     const pdf = new jsPDF("p", "pt", "a4");
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = pdf.internal.pageSize.getHeight();
@@ -37,16 +35,13 @@ const PaymentDone = () => {
     let newWidth = pdfWidth;
     let newHeight = pdfWidth / ratio;
 
-    // If the new height exceeds the pdf height, scale it down
     if (newHeight > pdfHeight) {
       newHeight = pdfHeight;
       newWidth = pdfHeight * ratio;
     }
 
-    // Add the image to the PDF
     pdf.addImage(imgData, "PNG", 0, 0, newWidth, newHeight);
 
-    // Add more pages if the content exceeds one page
     let heightLeft = imgHeight - newHeight;
     let position = 0;
 
@@ -57,7 +52,6 @@ const PaymentDone = () => {
       heightLeft -= pdfHeight;
     }
 
-    // Save the PDF
     pdf.save("download.pdf");
   };
 

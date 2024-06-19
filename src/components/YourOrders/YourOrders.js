@@ -1,6 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const YourOrders = () => {
+  const [yourOrders, setYourOrders] = useState([]);
+  const email = localStorage.getItem("email");
+
+  useEffect(() => {
+    const fetchYourOrders = async () => {
+      const modifiedEmail = email.replace(/[@.]/g, "");
+
+      try {
+        const response2 = await fetch(
+          `https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}/yourorders.json`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (response2.ok) {
+          const data = await response2.json();
+          if (data === null) {
+            console.log("No orders found for this user.");
+          } else {
+            console.log("Fetched your orders: ", data);
+            // Optionally, process the data here, e.g., update the local state
+          }
+        } else {
+          const data = await response2.json();
+          let errorMessage = "Get Request failed";
+          if (data && data.error && data.error.message) {
+            errorMessage = data.error.message;
+          }
+          throw new Error(errorMessage);
+        }
+      } catch (error) {
+        console.log("Error fetching orders:", error.message);
+      }
+    };
+
+    fetchYourOrders();
+  }, []);
+
   return (
     <>
       <section>

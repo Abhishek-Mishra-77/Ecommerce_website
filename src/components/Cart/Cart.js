@@ -15,7 +15,7 @@ const Cart = (props) => {
   };
 
   const onToken = (token) => {
-    navigate("/paymentdone");
+    navigate("/store/paymentdone");
     props.cartHandler();
     localStorage.setItem("paymentInfo", JSON.stringify(token));
     localStorage.setItem("amount", JSON.stringify(cartCtx?.totalAmount));

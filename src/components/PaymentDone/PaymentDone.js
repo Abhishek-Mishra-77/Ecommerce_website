@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { ItemProvideContext } from "../ContextApi/ItemProvider";
 import "./PaymentDone.css";
 import { useNavigate } from "react-router-dom";
 import html2canvas from "html2canvas";
@@ -8,6 +9,12 @@ const PaymentDone = () => {
   const paymentInfo = JSON.parse(localStorage.getItem("paymentInfo"));
   const amount = JSON.parse(localStorage.getItem("amount"));
   const navigate = useNavigate();
+  const cartCtx = useContext(ItemProvideContext);
+
+  useEffect(() => {
+    cartCtx.onProductsCheckOutHandler();
+  }, []);
+
   const moveToShopHandler = () => {
     navigate("/");
     localStorage.removeItem("paymentInfo");
@@ -55,8 +62,6 @@ const PaymentDone = () => {
     pdf.save("download.pdf");
   };
 
-  console.log(paymentInfo);
-
   return (
     <div className="payment-page">
       <div className="payment-inner">
@@ -76,12 +81,12 @@ const PaymentDone = () => {
           </div>
           <div className="payment-info-right">
             <p>ATM Card</p>
-            <p>{paymentInfo.card?.name}</p>
-            <p>{paymentInfo.created}</p>
-            <p>{paymentInfo.email}</p>
-            <p>{paymentInfo.card.address_city}</p>
+            <p>{paymentInfo?.card?.name}</p>
+            <p>{paymentInfo?.created}</p>
+            <p>{paymentInfo?.email}</p>
+            <p>{paymentInfo?.card.address_city}</p>
             <p>{amount} Rs</p>
-            <p>{paymentInfo.id}</p>
+            <p>{paymentInfo?.id}</p>
           </div>
         </div>
         <div className="payment-bottom">

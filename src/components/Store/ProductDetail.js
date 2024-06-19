@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import { useParams, useLocation, Navigate } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import { ItemProvideContext } from "../ContextApi/ItemProvider";
 import "./ProductDetail.css";
 import { useNavigate } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 
 const ProductDetail = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
   const cartCtx = useContext(ItemProvideContext);
   const productDetails = useLocation();
@@ -17,7 +16,7 @@ const ProductDetail = () => {
   const data = productDetails.state.product;
 
   const onToken = (token) => {
-    navigate("/paymentdone");
+    navigate("/store/paymentdone");
     localStorage.setItem("paymentInfo", JSON.stringify(token));
     localStorage.setItem("amount", JSON.stringify(data.price));
   };

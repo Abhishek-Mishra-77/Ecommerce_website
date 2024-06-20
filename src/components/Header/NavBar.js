@@ -36,6 +36,7 @@ const NavBar = (props) => {
           >
             YOURORDERS
           </NavLink>
+
           <NavLink
             to={"/about"}
             className="text-white hover:text-blue-400 no-underline"

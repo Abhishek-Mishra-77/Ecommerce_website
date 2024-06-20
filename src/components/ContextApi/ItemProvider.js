@@ -276,26 +276,57 @@ const ItemProvider = (props) => {
 
   const onProductsCheckOutHandler = async () => {
     const modifiedEmail = email.replace(/[@.]/g, "");
+    const adminEmail = "satyam627578@gmail.com".replace(/[@.]/g, "");
 
     try {
       const response1 = await fetch(
-        `https://ecommerceapp-121ff-default-rtdb.firebaseio.com/${modifiedEmail}/yourorders.json`,
-        {
-          yourOrders: items,
-        },
+        `https://ecommerce-e871a-default-rtdb.firebaseio.com/${adminEmail}.json`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify({
+            yourOrders: items,
+            email: email,
+          }),
         }
       );
       if (response1.ok) {
-        console.log("Added your orders .");
+        console.log("Added your orders.");
         // Optionally, you can clear any related local state here
       } else {
         const data = await response1.json();
-        let errorMessage = "Delete Request failed";
+        let errorMessage = "Request failed";
+        if (data && data.error && data.error.message) {
+          errorMessage = data.error.message;
+        }
+        throw new Error(errorMessage);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+
+    try {
+      const response1 = await fetch(
+        `https://ecommerce-e871a-default-rtdb.firebaseio.com/${modifiedEmail}.json`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            yourOrders: items,
+            email: email,
+          }),
+        }
+      );
+      if (response1.ok) {
+        console.log("Added your orders.");
+        // Optionally, you can clear any related local state here
+      } else {
+        const data = await response1.json();
+        let errorMessage = "Request failed";
         if (data && data.error && data.error.message) {
           errorMessage = data.error.message;
         }
